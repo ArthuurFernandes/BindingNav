@@ -1,0 +1,33 @@
+<section class="detalhamento-page">
+  <a class="voltar-link" routerLink="/produtos">Voltar para produtos</a>
+
+  <div class="detalhamento-card">
+    <div class="detalhamento-media">
+      <span class="detalhamento-tag">Produto selecionado</span>
+      <img *ngIf="imagem" [src]="imagem" [alt]="nome" class="detalhamento-imagem" />
+    </div>
+
+    <div class="detalhamento-info">
+      <p class="detalhamento-eyebrow">Detalhamento</p>
+      <h2>{{ nome }}</h2>
+      <p class="detalhamento-descricao">{{ descricao }}</p>
+
+      <div class="detalhamento-meta">
+        <div class="meta-item">
+          <span>ID</span>
+          <strong>#{{ id }}</strong>
+        </div>
+        <div *ngIf="preco !== null" class="meta-item">
+          <span>Preco</span>
+          <strong>R$ {{ preco | number:'1.2-2' }}</strong>
+        </div>
+        <div *ngIf="estoque !== null" class="meta-item">
+          <span>Estoque</span>
+          <strong>{{ estoque }} unidades</strong>
+        </div>
+      </div>
+
+      <a class="detalhamento-cta" routerLink="/produtos">Voltar a lista de produtos</a>
+    </div>
+  </div>
+</section>

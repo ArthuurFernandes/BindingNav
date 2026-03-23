@@ -1,0 +1,33 @@
+<section class="produtos-page">
+  <div class="produtos-hero">
+    <p class="produtos-eyebrow">Catalogo</p>
+    <h2 class="produtos-title">Produtos em destaque</h2>
+    <p class="produtos-subtitle">
+      Escolha seu notebook, monitor ou acessorio e veja os detalhes em uma tela mais ampla.
+    </p>
+  </div>
+
+  <div class="produtos-grid">
+    <article *ngFor="let produto of produtos" class="produto-card">
+      <span class="produto-badge">Em estoque</span>
+      <h3 class="produto-nome">{{ produto.nome }}</h3>
+      <img
+        class="produto-imagem"
+        [src]="produto.imagem"
+        [alt]="produto.nome"
+        loading="lazy"
+      />
+      <p class="produto-preco">R$ {{ produto.preco | number:'1.2-2' }}</p>
+      <p class="produto-estoque">{{ produto.estoque }} unidades disponiveis</p>
+      <p class="produto-descricao">{{ produto.descricao }}</p>
+      <div class="produto-actions">
+        <button
+          [routerLink]="['/produtos', produto.id]"
+          [queryParams]="{ nome: produto.nome, descricao: produto.descricao, imagem: produto.imagem, preco: produto.preco, estoque: produto.estoque }"
+        >
+          Ver detalhes
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
